@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReportGenerator.Company;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -12,20 +13,21 @@ namespace ReportGenerator
         [STAThread]
         static void Main()
         {
-            try
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            if (ConfigurationManager.ConnectionStrings["Main"] == null)
             {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                if (ConfigurationManager.ConnectionStrings["Main"] == null)
-                {
-                    throw new Exception("Config dosyasında connection string bulunamadı");
-                }
-                GlobalParams.conn = new DAL.Connection();
-                Application.Run(new frmLogin());
+                MessageBox.Show("Config dosyasında connection string bulunamadı!");
+                return;
             }
-            catch (Exception ex )
+            GlobalParams.conn = new DAL.Connection();
+            Application.Run(new frmCompany());
+            return;
+
+            Application.Run(new frmLogin());
+            if (GlobalParams.LoggedIn)
             {
-                MessageBox.Show(ex.Message);
+                Application.Run(new frmMain());
             }
         }
     }
@@ -33,5 +35,6 @@ namespace ReportGenerator
     public static class GlobalParams
     {
         public static DAL.Connection conn { get; set; }
+        public static bool LoggedIn { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace ReportGenerator.Helper
 {
     public static class LoginHelper
     {
-        private static readonly string EncryptionKey = "gUkXp2s5";
+        //private static readonly string EncryptionKey = "gUkXp2s5";
         public static string HashPassword(string password)
         {
             byte[] salt;
@@ -39,6 +39,7 @@ namespace ReportGenerator.Helper
 
         public static string Encrypt(string clearText)
         {
+            string EncryptionKey = "abc123";
             byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
             using (Aes encryptor = Aes.Create())
             {
@@ -59,6 +60,7 @@ namespace ReportGenerator.Helper
         }
         public static string Decrypt(string cipherText)
         {
+            string EncryptionKey = "abc123";
             cipherText = cipherText.Replace(" ", "+");
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
             using (Aes encryptor = Aes.Create())

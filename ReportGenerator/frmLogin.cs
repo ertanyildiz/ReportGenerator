@@ -37,7 +37,10 @@ namespace ReportGenerator
                     if (! passwordCheck)
                     {
                         MessageBox.Show("Kullanıcı veya şifre hatalı!", "Giriş hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
+                    GlobalParams.LoggedIn = true;
+                    Close();
                 }
                 else
                 {

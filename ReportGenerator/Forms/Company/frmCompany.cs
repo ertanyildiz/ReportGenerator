@@ -4,8 +4,9 @@ using System.Windows.Forms;
 using System.Data.Common;
 using ReportGenerator.Helper;
 using DevExpress.XtraGrid.Views.Grid;
+using System.Data.SqlClient;
 
-namespace ReportGenerator.Company
+namespace ReportGenerator.Forms.Company
 {
     public partial class frmCompany : DevForm
     {
@@ -106,16 +107,16 @@ namespace ReportGenerator.Company
                 using (DbCommand command = cnn.CreateCommand("SP_DELETE_COMPANY", CommandType.StoredProcedure))
                 {
                     cnn.AddParameter(command, "@Id", recordId);
-
                     cnn.ExecuteNonQuery(command);
                     MessageBox.Show("Kayıt Silindi başarılı", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearFields();
                     InitList();
+                    recordId = 0;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Hata: {ex.Message}");
+                MessageBox.Show($"Hata: {ex.Message}", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

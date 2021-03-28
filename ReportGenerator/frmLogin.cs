@@ -40,6 +40,7 @@ namespace ReportGenerator
                         return;
                     }
                     GlobalParams.LoggedIn = true;
+                    GlobalParams.UserId = Convert.ToInt32(userDt.Rows[0]["Id"]);
                     Close();
                 }
                 else

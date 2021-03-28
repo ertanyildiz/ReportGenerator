@@ -1,4 +1,4 @@
-﻿namespace ReportGenerator.Company
+﻿namespace ReportGenerator.Forms.Company
 {
     partial class frmCompany
     {
@@ -77,30 +77,34 @@
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 30);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(911, 513);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1063, 631);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.gcListe);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(549, 3);
+            this.panel2.Location = new System.Drawing.Point(640, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(359, 507);
+            this.panel2.Size = new System.Drawing.Size(420, 623);
             this.panel2.TabIndex = 1;
             // 
             // gcListe
             // 
             this.gcListe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcListe.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gcListe.Location = new System.Drawing.Point(0, 0);
             this.gcListe.MainView = this.gvListe;
+            this.gcListe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gcListe.MenuManager = this.barManager1;
             this.gcListe.Name = "gcListe";
-            this.gcListe.Size = new System.Drawing.Size(359, 507);
+            this.gcListe.Size = new System.Drawing.Size(420, 623);
             this.gcListe.TabIndex = 0;
             this.gcListe.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvListe});
@@ -114,6 +118,7 @@
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6});
+            this.gvListe.DetailHeight = 431;
             this.gvListe.GridControl = this.gcListe;
             this.gvListe.Name = "gvListe";
             this.gvListe.OptionsBehavior.Editable = false;
@@ -125,45 +130,57 @@
             // 
             this.gridColumn1.Caption = "gridColumn1";
             this.gridColumn1.FieldName = "ID";
+            this.gridColumn1.MinWidth = 23;
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Width = 87;
             // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Şirket Adı";
             this.gridColumn2.FieldName = "Name";
+            this.gridColumn2.MinWidth = 23;
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
+            this.gridColumn2.Width = 87;
             // 
             // gridColumn3
             // 
             this.gridColumn3.Caption = "Kullanıcı Adı";
             this.gridColumn3.FieldName = "UserName";
+            this.gridColumn3.MinWidth = 23;
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 1;
+            this.gridColumn3.Width = 87;
             // 
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Sunucu Adı";
             this.gridColumn4.FieldName = "ServerName";
+            this.gridColumn4.MinWidth = 23;
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.Width = 87;
             // 
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Db Adı";
             this.gridColumn5.FieldName = "DbName";
+            this.gridColumn5.MinWidth = 23;
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.Width = 87;
             // 
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Password";
             this.gridColumn6.FieldName = "Password";
+            this.gridColumn6.MinWidth = 23;
             this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Width = 87;
             // 
             // barManager1
             // 
@@ -190,7 +207,7 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnKaydet),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSil),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnYeni)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnYeni, true)});
             this.bar2.OptionsBar.DrawBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -237,31 +254,35 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(911, 24);
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlTop.Size = new System.Drawing.Size(1063, 30);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 537);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 661);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(911, 0);
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1063, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 513);
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 631);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(911, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1063, 30);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 513);
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 631);
             // 
             // panel1
             // 
@@ -276,89 +297,95 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(3, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(540, 507);
+            this.panel1.Size = new System.Drawing.Size(631, 623);
             this.panel1.TabIndex = 0;
             // 
             // txtSirketAdi
             // 
-            this.txtSirketAdi.Location = new System.Drawing.Point(161, 19);
+            this.txtSirketAdi.Location = new System.Drawing.Point(188, 23);
+            this.txtSirketAdi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSirketAdi.Name = "txtSirketAdi";
-            this.txtSirketAdi.Size = new System.Drawing.Size(310, 21);
+            this.txtSirketAdi.Size = new System.Drawing.Size(361, 23);
             this.txtSirketAdi.TabIndex = 2;
             // 
             // txtVeritabani
             // 
-            this.txtVeritabani.Location = new System.Drawing.Point(161, 142);
+            this.txtVeritabani.Location = new System.Drawing.Point(188, 175);
+            this.txtVeritabani.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtVeritabani.Name = "txtVeritabani";
-            this.txtVeritabani.Size = new System.Drawing.Size(310, 21);
+            this.txtVeritabani.Size = new System.Drawing.Size(361, 23);
             this.txtVeritabani.TabIndex = 2;
             // 
             // txtSifre
             // 
-            this.txtSifre.Location = new System.Drawing.Point(161, 115);
+            this.txtSifre.Location = new System.Drawing.Point(188, 142);
+            this.txtSifre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.PasswordChar = '*';
-            this.txtSifre.Size = new System.Drawing.Size(310, 21);
+            this.txtSifre.Size = new System.Drawing.Size(361, 23);
             this.txtSifre.TabIndex = 2;
             // 
             // txtKullaniciAdi
             // 
-            this.txtKullaniciAdi.Location = new System.Drawing.Point(161, 84);
+            this.txtKullaniciAdi.Location = new System.Drawing.Point(188, 103);
+            this.txtKullaniciAdi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
-            this.txtKullaniciAdi.Size = new System.Drawing.Size(310, 21);
+            this.txtKullaniciAdi.Size = new System.Drawing.Size(361, 23);
             this.txtKullaniciAdi.TabIndex = 2;
             // 
             // txtSunucuAdi
             // 
-            this.txtSunucuAdi.Location = new System.Drawing.Point(161, 53);
+            this.txtSunucuAdi.Location = new System.Drawing.Point(188, 65);
+            this.txtSunucuAdi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSunucuAdi.Name = "txtSunucuAdi";
-            this.txtSunucuAdi.Size = new System.Drawing.Size(310, 21);
+            this.txtSunucuAdi.Size = new System.Drawing.Size(361, 23);
             this.txtSunucuAdi.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(52, 150);
+            this.label5.Location = new System.Drawing.Point(61, 185);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
+            this.label5.Size = new System.Drawing.Size(67, 17);
             this.label5.TabIndex = 0;
             this.label5.Text = "Veritabanı";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(52, 123);
+            this.label4.Location = new System.Drawing.Point(61, 151);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.Size = new System.Drawing.Size(34, 17);
             this.label4.TabIndex = 0;
             this.label4.Text = "Şifre";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 87);
+            this.label3.Location = new System.Drawing.Point(61, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.Size = new System.Drawing.Size(76, 17);
             this.label3.TabIndex = 0;
             this.label3.Text = "Kullanıcı Adı";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 61);
+            this.label2.Location = new System.Drawing.Point(61, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 13);
+            this.label2.Size = new System.Drawing.Size(77, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Sunucu Adı";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 27);
+            this.label1.Location = new System.Drawing.Point(61, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(64, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Şirket Adı";
             // 
@@ -368,9 +395,9 @@
             // 
             // frmCompany
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 537);
+            this.ClientSize = new System.Drawing.Size(1063, 661);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using DevExpress.XtraBars;
-using ReportGenerator.Company;
+using ReportGenerator.Forms.Company;
+using ReportGenerator.Forms.Report;
+using ReportGenerator.Forms.Settings;
 
 namespace ReportGenerator
 {
@@ -55,6 +49,17 @@ namespace ReportGenerator
             }
 
             return index;
+        }
+
+        private void btnSettings_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var settings = new frmSettings();
+            settings.Show();
+        }
+
+        private void btnRaporKart_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new frmReport());
         }
 
         private void btnSirketKart_ItemClick(object sender, ItemClickEventArgs e)

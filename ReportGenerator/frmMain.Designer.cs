@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSettings = new DevExpress.XtraBars.BarButtonItem();
             this.btnSirketKart = new DevExpress.XtraBars.BarButtonItem();
             this.btnRaporKart = new DevExpress.XtraBars.BarButtonItem();
             this.btnEmailKart = new DevExpress.XtraBars.BarButtonItem();
@@ -50,10 +50,10 @@
             // 
             // ribbon
             // 
-            this.ribbon.CaptionBarItemLinks.Add(this.barButtonItem4);
+            this.ribbon.CaptionBarItemLinks.Add(this.btnSettings);
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem4,
+            this.btnSettings,
             this.ribbon.ExpandCollapseItem,
             this.ribbon.SearchEditItem,
             this.btnSirketKart,
@@ -68,16 +68,17 @@
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
-            this.ribbon.Size = new System.Drawing.Size(1355, 158);
+            this.ribbon.Size = new System.Drawing.Size(1581, 193);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
-            // barButtonItem4
+            // btnSettings
             // 
-            this.barButtonItem4.Caption = "Ayarlar";
-            this.barButtonItem4.Id = 5;
-            this.barButtonItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.Image")));
-            this.barButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
-            this.barButtonItem4.Name = "barButtonItem4";
+            this.btnSettings.Caption = "Ayarlar";
+            this.btnSettings.Id = 5;
+            this.btnSettings.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.ImageOptions.Image")));
+            this.btnSettings.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSettings.ImageOptions.LargeImage")));
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSettings_ItemClick);
             // 
             // btnSirketKart
             // 
@@ -97,6 +98,7 @@
             this.btnRaporKart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRaporKart.ImageOptions.Image")));
             this.btnRaporKart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRaporKart.ImageOptions.LargeImage")));
             this.btnRaporKart.Name = "btnRaporKart";
+            this.btnRaporKart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRaporKart_ItemClick);
             // 
             // btnEmailKart
             // 
@@ -149,11 +151,11 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.staticUserName);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 618);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 760);
             this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1355, 24);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1581, 30);
             // 
             // xtraTabbedMdiManager1
             // 
@@ -165,9 +167,9 @@
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1355, 642);
+            this.ClientSize = new System.Drawing.Size(1581, 790);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.IsMdiContainer = true;
@@ -175,7 +177,7 @@
             this.Name = "frmMain";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "Oto-Rapor";
+            this.Text = "Raporman";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
@@ -196,7 +198,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem btnSettings;
         private DevExpress.XtraBars.BarStaticItem staticUserName;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;

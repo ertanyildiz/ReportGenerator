@@ -1,9 +1,7 @@
-﻿using ReportGenerator.Company;
+﻿using ReportGenerator.Forms.Report;
+using ReportGenerator.Forms.Settings;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ReportGenerator
@@ -21,9 +19,8 @@ namespace ReportGenerator
                 return;
             }
             GlobalParams.conn = new DAL.Connection();
-            Application.Run(new frmCompany());
+            Application.Run(new frmReport());
             return;
-
             Application.Run(new frmLogin());
             if (GlobalParams.LoggedIn)
             {
@@ -36,5 +33,7 @@ namespace ReportGenerator
     {
         public static DAL.Connection conn { get; set; }
         public static bool LoggedIn { get; set; }
+
+        public static int UserId { get; set; }
     }
 }

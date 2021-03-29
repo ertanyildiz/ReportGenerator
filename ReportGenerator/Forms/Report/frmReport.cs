@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Globalization;
 using System.Transactions;
 using System.Windows.Forms;
 
@@ -173,6 +174,7 @@ namespace ReportGenerator.Forms.Report
             comboDosyaTipi.SelectedItem = record.Rows[0]["FileFormat"];
             txtSorguRichTextBox.Text = record.Rows[0]["SqlQuery"].ToString();
             txtRaporTasarimDosyasi.Text = record.Rows[0]["ReportFile"].ToString();
+            dtpSaat.Value = DateTime.ParseExact(record.Rows[0]["ReportTime"].ToString(), "HH:mm", CultureInfo.CurrentCulture);
             Text = $"{title} - {txtRapor.Text}";
         }
 

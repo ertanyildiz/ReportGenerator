@@ -28,7 +28,7 @@ namespace ReportGenerator.Forms.Company
             }
             splashScreenManager1.ShowWaitForm();
             splashScreenManager1.SetWaitFormCaption("Veritabanı bağlantı testi");
-            var isDbUp = DbHelper.CheckServerIsUp(txtSunucuAdi.Text, txtKullaniciAdi.Text, LoginHelper.Encrypt(txtSifre.Text));
+            var isDbUp = DbHelper.CheckServerIsUp(txtSunucuAdi.Text, txtVeritabani.Text, txtKullaniciAdi.Text, LoginHelper.Encrypt(txtSifre.Text));
             splashScreenManager1.CloseWaitForm();
             if (!isDbUp)
             {

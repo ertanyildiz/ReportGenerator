@@ -18,6 +18,8 @@ namespace ReportGenerator
                 MessageBox.Show("Config dosyasında connection string bulunamadı!");
                 return;
             }
+            ReportService service = new ReportService();
+            service.TestIT();
             GlobalParams.conn = new DAL.Connection();
             //Application.Run(new frmReport());
             //return;

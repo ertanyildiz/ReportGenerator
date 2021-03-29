@@ -9,15 +9,15 @@ namespace ReportGenerator.Helper
 {
     public static class DbHelper
     {
-        public static string CreateConnectionStringFromCrenditials(string server, string userName, string password)
+        public static string CreateConnectionStringFromCrenditials(string server, string dbName, string userName, string password)
         {
 
-            return $"data source={server};integrated security=false;initial catalog=ReportGenerator;User ID={userName};Password={LoginHelper.Decrypt(password)}";
+            return $"data source={server};integrated security=false;initial catalog={dbName};User ID={userName};Password={LoginHelper.Decrypt(password)}";
         }
 
-        public static bool CheckServerIsUp(string server, string userName, string password)
+        public static bool CheckServerIsUp(string server, string dbName, string userName, string password)
         {
-            var connectionString = CreateConnectionStringFromCrenditials(server, userName, password);
+            var connectionString = CreateConnectionStringFromCrenditials(server, dbName, userName, password);
             using (var l_oConnection = new SqlConnection(connectionString))
             {
                 try

@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using DevExpress.XtraBars;
 using ReportGenerator.Forms.Company;
+using ReportGenerator.Forms.Email;
 using ReportGenerator.Forms.Report;
 using ReportGenerator.Forms.Settings;
 
@@ -65,6 +66,11 @@ namespace ReportGenerator
         private void btnSirketKart_ItemClick(object sender, ItemClickEventArgs e)
         {
             OpenForm(new frmCompany());
+        }
+
+        private void btnEmailKart_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new frmEmail());
         }
     }
 }

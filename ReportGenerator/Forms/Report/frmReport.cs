@@ -13,9 +13,11 @@ namespace ReportGenerator.Forms.Report
     public partial class frmReport : DevForm
     {
         private int recordId;
+        private readonly string title;
         public frmReport()
         {
             InitializeComponent();
+            title = Text;
         }
 
         private void frmReport_Load(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace ReportGenerator.Forms.Report
                         cnn.AddParameter(command, "@SendToBcc", txtKimeBCCRichTextBox.Text);
                         cnn.AddParameter(command, "@ReportFile", txtRaporTasarimDosyasi.Text);
                         cnn.AddParameter(command, "@FileFormat", comboDosyaTipi.SelectedItem.ToString());
-                        cnn.AddParameter(command, "@ReportTime", dtpSaat.Value);
+                        cnn.AddParameter(command, "@ReportTime", dtpSaat.Value.ToString("HH:mm"));
                         cnn.AddParameter(command, "@SqlQuery", txtSorguRichTextBox.Text);
                         cnn.AddParameter(command, "@CompanyId", gleSirket.EditValue);
                         if (recordId < 1)
@@ -74,6 +76,7 @@ namespace ReportGenerator.Forms.Report
                     MessageBox.Show("Kayıt başarılı", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearFields();
                     InitList();
+                    recordId = 0;
                     scope.Complete();
                 }
             }
@@ -88,13 +91,12 @@ namespace ReportGenerator.Forms.Report
         {
             gleSirket.EditValue = txtRapor.Text = txtKimeBCCRichTextBox.Text = txtKimeRichTextBox.Text = txtSorguRichTextBox.Text = txtRaporTasarimDosyasi.Text = "";
             comboGunlerMultiSelect.SetEditValue("");
-
         }
 
         private bool CheckFields()
         {
             return !string.IsNullOrEmpty(gleSirket.EditValue.ToString()) && !string.IsNullOrEmpty(txtRapor.Text) && !string.IsNullOrEmpty(txtKimeRichTextBox.Text) &&
-                txtRaporTasarimDosyasi.Text != null && !string.IsNullOrEmpty(txtSorguRichTextBox.Text)
+                !string.IsNullOrEmpty(txtRaporTasarimDosyasi.Text) && !string.IsNullOrEmpty(txtSorguRichTextBox.Text)
                 && !string.IsNullOrEmpty(comboGunlerMultiSelect.EditValue.ToString());
         }
         private void InitList()
@@ -171,6 +173,7 @@ namespace ReportGenerator.Forms.Report
             comboDosyaTipi.SelectedItem = record.Rows[0]["FileFormat"];
             txtSorguRichTextBox.Text = record.Rows[0]["SqlQuery"].ToString();
             txtRaporTasarimDosyasi.Text = record.Rows[0]["ReportFile"].ToString();
+            Text = $"{title} - {txtRapor.Text}";
         }
 
         private void btnSil_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -192,6 +195,13 @@ namespace ReportGenerator.Forms.Report
                 InitList();
                 recordId = 0;
             }
+        }
+
+        private void btnYeni_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            recordId = 0;
+            ClearFields();
+            Text = $"{title} - Yeni Kayıt";
         }
     }
 }

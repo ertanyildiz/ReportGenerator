@@ -107,6 +107,7 @@
             this.btnEmailKart.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEmailKart.ImageOptions.Image")));
             this.btnEmailKart.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnEmailKart.ImageOptions.LargeImage")));
             this.btnEmailKart.Name = "btnEmailKart";
+            this.btnEmailKart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEmailKart_ItemClick);
             // 
             // barButtonItem3
             // 

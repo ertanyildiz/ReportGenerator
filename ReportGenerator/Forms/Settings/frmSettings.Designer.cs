@@ -41,10 +41,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtSifre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.btnMailAdresKaydet = new DevExpress.XtraEditors.SimpleButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtMailAdresi = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMailAdresi.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -57,7 +63,8 @@
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPage1
             // 
@@ -163,6 +170,44 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Şifre";
             // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Controls.Add(this.txtMailAdresi);
+            this.xtraTabPage3.Controls.Add(this.btnMailAdresKaydet);
+            this.xtraTabPage3.Controls.Add(this.label4);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(648, 191);
+            this.xtraTabPage3.Text = "Test Mail Adresi";
+            // 
+            // btnMailAdresKaydet
+            // 
+            this.btnMailAdresKaydet.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnMailAdresKaydet.Location = new System.Drawing.Point(426, 89);
+            this.btnMailAdresKaydet.Name = "btnMailAdresKaydet";
+            this.btnMailAdresKaydet.Size = new System.Drawing.Size(123, 30);
+            this.btnMailAdresKaydet.TabIndex = 5;
+            this.btnMailAdresKaydet.Text = "Kaydet";
+            this.btnMailAdresKaydet.Click += new System.EventHandler(this.btnMailAdresKaydet_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(35, 42);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Mail Adresi";
+            // 
+            // txtMailAdresi
+            // 
+            this.txtMailAdresi.Location = new System.Drawing.Point(138, 37);
+            this.txtMailAdresi.Name = "txtMailAdresi";
+            this.txtMailAdresi.Properties.Mask.EditMask = "((([0-9a-zA-Z_%-])+[.])+|([0-9a-zA-Z_%-])+)+@((([0-9a-zA-Z_-])+[.])+|([0-9a-zA-Z_" +
+    "-])+)+";
+            this.txtMailAdresi.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtMailAdresi.Size = new System.Drawing.Size(411, 22);
+            this.txtMailAdresi.TabIndex = 7;
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -178,6 +223,9 @@
             this.xtraTabPage1.PerformLayout();
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage2.PerformLayout();
+            this.xtraTabPage3.ResumeLayout(false);
+            this.xtraTabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMailAdresi.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,5 +244,9 @@
         private System.Windows.Forms.TextBox txtSifre;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.SimpleButton btnSifreDegistir;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private DevExpress.XtraEditors.TextEdit txtMailAdresi;
+        private DevExpress.XtraEditors.SimpleButton btnMailAdresKaydet;
+        private System.Windows.Forms.Label label4;
     }
 }

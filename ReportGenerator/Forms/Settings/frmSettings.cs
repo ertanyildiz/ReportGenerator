@@ -90,6 +90,17 @@ namespace ReportGenerator.Forms.Settings
         private void frmSettings_Load(object sender, EventArgs e)
         {
             InitReportPath();
+            txtMailAdresi.Text = GetTestMailAddress();
+        }
+
+        private string GetTestMailAddress()
+        {
+            var dt = cnn.GetData("SELECT * FROM Referans WHERE RefName = 'TEST_EMAIL_ADDRESS'", CommandType.Text);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["RefDescription"].ToString();
+            }
+            return "";
         }
 
         private void InitReportPath()
@@ -98,6 +109,23 @@ namespace ReportGenerator.Forms.Settings
             if (dt.Rows.Count > 0)
             {
                 txtRaporYolu.Text = dt.Rows[0]["RefDescription"].ToString();
+            }
+        }
+
+        private void btnMailAdresKaydet_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMailAdresi.Text))
+            {
+                using (DbCommand command = cnn.CreateCommand("SP_UPSERT_TEST_EMAIL", CommandType.StoredProcedure))
+                {
+                    cnn.AddParameter(command, "@EmailAddress", txtMailAdresi.Text);
+                    cnn.ExecuteNonQuery(command);
+                    MessageBox.Show("Test Mail adresi değiştirildi", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Test Mail adresi boş olamaz!", Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

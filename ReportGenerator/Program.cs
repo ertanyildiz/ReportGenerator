@@ -1,5 +1,6 @@
 ﻿using ReportGenerator.Forms.Report;
 using ReportGenerator.Forms.Settings;
+using ReportGenerator.Helper;
 using System;
 using System.Configuration;
 using System.Windows.Forms;
@@ -16,6 +17,16 @@ namespace ReportGenerator
             if (ConfigurationManager.ConnectionStrings["Main"] == null)
             {
                 MessageBox.Show("Config dosyasında connection string bulunamadı!");
+                return;
+            }
+            if (string.IsNullOrEmpty(ConfigurationManager.AppSettings["DbName"]))
+            {
+                MessageBox.Show("Config dosyasında DbName bulunamadı!");
+                return;
+            }
+            if (! DbHelper.CheckDatabaseExist(ConfigurationManager.ConnectionStrings["Main"].ConnectionString, ConfigurationManager.AppSettings["DbName"]))
+            {
+                MessageBox.Show("Lütfen script dosyasını database üzerinde çalıştırarak veritabanı oluşturun!");
                 return;
             }
             ReportService service = new ReportService();

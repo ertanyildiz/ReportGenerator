@@ -40,6 +40,11 @@ namespace ReportGenerator.Forms.Report
                         MessageBox.Show("Tüm alanları doldurunuz!", Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
+                    if (string.IsNullOrEmpty(GetTestMailAddress()))
+                    {
+                        MessageBox.Show("Mail Ayarları yapılmadan rapor tanımlanamaz!", Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                     using (DbCommand command = cnn.CreateCommand("SP_UPSERT_REPORT", CommandType.StoredProcedure))
                     {
                         cnn.AddParameter(command, "@Id", recordId);
@@ -204,6 +209,16 @@ namespace ReportGenerator.Forms.Report
             recordId = 0;
             ClearFields();
             Text = $"{title} - Yeni Kayıt";
+        }
+
+        private string GetTestMailAddress()
+        {
+            var dt = cnn.GetData("SELECT * FROM Referans WHERE RefName = 'TEST_EMAIL_ADDRESS'", CommandType.Text);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["RefDescription"].ToString();
+            }
+            return "";
         }
     }
 }

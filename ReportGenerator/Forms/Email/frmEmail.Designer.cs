@@ -57,13 +57,11 @@
             this.txtMailAdresi = new System.Windows.Forms.TextBox();
             this.txtSifre = new System.Windows.Forms.TextBox();
             this.txtSunucuAdi = new System.Windows.Forms.TextBox();
-            this.txtKullaniciAdi = new System.Windows.Forms.TextBox();
             this.txtKimden = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::ReportGenerator.WaitForm1), true, true);
@@ -271,13 +269,11 @@
             this.panel1.Controls.Add(this.txtMailAdresi);
             this.panel1.Controls.Add(this.txtSifre);
             this.panel1.Controls.Add(this.txtSunucuAdi);
-            this.panel1.Controls.Add(this.txtKullaniciAdi);
             this.panel1.Controls.Add(this.txtKimden);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -289,7 +285,7 @@
             // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(188, 254);
+            this.txtPort.Location = new System.Drawing.Point(188, 213);
             this.txtPort.MenuManager = this.barManager1;
             this.txtPort.Name = "txtPort";
             this.txtPort.Properties.Mask.EditMask = "d";
@@ -303,7 +299,7 @@
             this.comboSSL.Items.AddRange(new object[] {
             "true",
             "false"});
-            this.comboSSL.Location = new System.Drawing.Point(188, 288);
+            this.comboSSL.Location = new System.Drawing.Point(188, 251);
             this.comboSSL.Name = "comboSSL";
             this.comboSSL.Size = new System.Drawing.Size(361, 24);
             this.comboSSL.TabIndex = 7;
@@ -364,7 +360,7 @@
             // 
             // txtSifre
             // 
-            this.txtSifre.Location = new System.Drawing.Point(188, 213);
+            this.txtSifre.Location = new System.Drawing.Point(188, 174);
             this.txtSifre.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.PasswordChar = '*';
@@ -379,14 +375,6 @@
             this.txtSunucuAdi.Size = new System.Drawing.Size(361, 23);
             this.txtSunucuAdi.TabIndex = 3;
             // 
-            // txtKullaniciAdi
-            // 
-            this.txtKullaniciAdi.Location = new System.Drawing.Point(188, 174);
-            this.txtKullaniciAdi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtKullaniciAdi.Name = "txtKullaniciAdi";
-            this.txtKullaniciAdi.Size = new System.Drawing.Size(361, 23);
-            this.txtKullaniciAdi.TabIndex = 4;
-            // 
             // txtKimden
             // 
             this.txtKimden.Location = new System.Drawing.Point(188, 96);
@@ -398,7 +386,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(61, 295);
+            this.label5.Location = new System.Drawing.Point(61, 258);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 17);
             this.label5.TabIndex = 0;
@@ -407,7 +395,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(61, 144);
+            this.label7.Location = new System.Drawing.Point(61, 141);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 17);
             this.label7.TabIndex = 0;
@@ -416,7 +404,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(61, 259);
+            this.label8.Location = new System.Drawing.Point(61, 219);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 17);
             this.label8.TabIndex = 0;
@@ -425,25 +413,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(61, 224);
+            this.label4.Location = new System.Drawing.Point(61, 180);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 17);
             this.label4.TabIndex = 0;
             this.label4.Text = "Şifre";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(61, 184);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 17);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Kullanıcı Adı";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(61, 104);
+            this.label2.Location = new System.Drawing.Point(61, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 0;
@@ -452,7 +431,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(61, 64);
+            this.label1.Location = new System.Drawing.Point(61, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 0;
@@ -497,7 +476,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtKimden;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraBars.BarManager barManager1;
@@ -516,7 +494,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private System.Windows.Forms.TextBox txtMailAdresi;
         private System.Windows.Forms.TextBox txtSifre;
-        private System.Windows.Forms.TextBox txtKullaniciAdi;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;

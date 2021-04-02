@@ -4,6 +4,7 @@ using ReportGenerator.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -66,8 +67,10 @@ namespace ReportGenerator
                 }
                 var finalPdfFileName = $"{Path.Combine(pdfPath, Path.GetRandomFileName())}.pdf";
                 EmailHelper.MergePDFs(finalPdfFileName, pdfFileNames);
-                EmailHelper.SendEmail(emailConfig, finalPdfFileName, emailAddresses, emailAddressesBcc, reportNames);
-
+                EmailHelper.SendEmail(reports, finalPdfFileName, reportNames);
+                CultureInfo turkish = new CultureInfo("tr-TR");
+                string dayName = DateTime.Now.ToString("dddd", turkish);
+                Log($"{dayName} {DateTime.Now:HH:mm} Maili gönderildi", "BİLGİ");
                 return reports.Rows.Count;
             }
             catch (Exception ex)
@@ -85,11 +88,12 @@ namespace ReportGenerator
             var reports = new DataTable();
             using (var command = cnn.CreateCommand("SP_SELECT_REPORT_BY_TIME", CommandType.StoredProcedure))
             {
-                //localConnection.AddParameter(command, "@DayNumber", currentDay);
-                //localConnection.AddParameter(command, "@ReportTime", currentTime);
-                cnn.AddParameter(command, "@DayNumber", 1);
-                cnn.AddParameter(command, "@ReportTime", "14:55");
+                cnn.AddParameter(command, "@DayNumber", currentDay);
+                cnn.AddParameter(command, "@ReportTime", currentTime);
+                //cnn.AddParameter(command, "@DayNumber", 1);
+                //cnn.AddParameter(command, "@ReportTime", "14:55");
                 reports = cnn.GetData(command);
+                cnn.Close();
             }
             return reports;
         }
@@ -99,16 +103,24 @@ namespace ReportGenerator
             var cnn = new DAL.Connection();
             using (var command = cnn.CreateCommand("SP_INSERT_LOG", CommandType.StoredProcedure))
             {
+                description = $"{DateTime.Now} - {description}";
                 cnn.AddParameter(command, "@Description", description);
                 cnn.AddParameter(command, "@Type", type);
                 cnn.ExecuteNonQuery(command);
+                cnn.Close();
             }
         }
 
         private DataTable GetEmailConfig()
         {
             var cnn = new DAL.Connection();
-            return cnn.GetData("SELECT * FROM EmailConfig", CommandType.Text);
+            var dt = new DataTable();
+            using (var command = cnn.CreateCommand("SELECT * FROM EmailConfig", CommandType.Text))
+            {
+                dt = cnn.GetData(command);
+                cnn.Close();
+            }
+            return dt;
         }
     }
 }

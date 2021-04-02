@@ -15,7 +15,7 @@ namespace ReportGeneratorService
         public void Start()
         {
             timer.Elapsed += new ElapsedEventHandler(OnElapsedTime);
-            timer.Interval = 5000;
+            timer.Interval = 60000;
             timer.Enabled = true;
         }
         public void Stop()

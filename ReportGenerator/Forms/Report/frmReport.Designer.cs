@@ -42,6 +42,7 @@
             this.btnKaydet = new DevExpress.XtraBars.BarButtonItem();
             this.btnSil = new DevExpress.XtraBars.BarButtonItem();
             this.btnYeni = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRaporTest = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -68,6 +69,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::ReportGenerator.WaitForm1), true, true);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcListe)).BeginInit();
@@ -173,9 +175,10 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnKaydet,
             this.btnSil,
-            this.btnYeni});
+            this.btnYeni,
+            this.btnRaporTest});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 3;
+            this.barManager1.MaxItemId = 4;
             // 
             // bar2
             // 
@@ -186,7 +189,8 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnKaydet, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSil),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnYeni, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnYeni, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnRaporTest, true)});
             this.bar2.OptionsBar.DrawBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -226,6 +230,16 @@
             this.btnYeni.Name = "btnYeni";
             this.btnYeni.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnYeni.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnYeni_ItemClick);
+            // 
+            // btnRaporTest
+            // 
+            this.btnRaporTest.Caption = "Test";
+            this.btnRaporTest.Id = 3;
+            this.btnRaporTest.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRaporTest.ImageOptions.Image")));
+            this.btnRaporTest.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnRaporTest.ImageOptions.LargeImage")));
+            this.btnRaporTest.Name = "btnRaporTest";
+            this.btnRaporTest.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btnRaporTest.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRaporTest_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -485,6 +499,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Şirket";
             // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -554,5 +572,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox comboDosyaTipi;
         private DevExpress.XtraEditors.CheckedComboBoxEdit comboGunlerMultiSelect;
+        private DevExpress.XtraBars.BarButtonItem btnRaporTest;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

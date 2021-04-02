@@ -1,11 +1,15 @@
 ﻿using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraPrinting;
+using DevExpress.XtraReports.UI;
 using ReportGenerator.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Globalization;
+using System.IO;
 using System.Transactions;
 using System.Windows.Forms;
 
@@ -219,6 +223,71 @@ namespace ReportGenerator.Forms.Report
                 return dt.Rows[0]["RefDescription"].ToString();
             }
             return "";
+        }
+
+        private void btnRaporTest_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                splashScreenManager1.ShowWaitForm();
+                splashScreenManager1.SetWaitFormCaption("Rapor Testi...");
+                var testMailAddress = GetTestMailAddress();
+                if (string.IsNullOrEmpty(testMailAddress))
+                {
+                    MessageBox.Show("Mail Ayarları yapılmadan rapor tanımlanamaz!", Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (recordId < 1)
+                {
+                    MessageBox.Show("Lütfen bir kayıt seçiniz!", Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                DataTable recordDt = null;
+                using (DbCommand command = cnn.CreateCommand("SP_SELECT_REPORT_BY_ID", CommandType.StoredProcedure))
+                {
+                    cnn.AddParameter(command, "@Id", recordId);
+                    recordDt = cnn.GetData(command);
+                }
+                if (recordDt?.Rows.Count < 1)
+                {
+                    MessageBox.Show("Kayıt bulunamadı!", Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    InitList();
+                    return;
+                }
+                var row = recordDt.Rows[0];
+                var servername = row["ServerName"].ToString();
+                var userName = row["UserName"].ToString();
+                var dbName = row["DbName"].ToString();
+                var password = row["Password"].ToString();
+                var dynamicConnectionString = DbHelper.CreateConnectionStringFromCrenditials(servername, dbName, userName, password);
+                var reporConnection = new DAL.Connection("", dynamicConnectionString);
+                var sqlQuery = row["SqlQuery"].ToString();
+                var dt = reporConnection.GetData(sqlQuery, CommandType.Text);
+                XtraReport xtraReport = new XtraReport();
+                xtraReport.LoadLayout(row["ReportFile"].ToString());
+                PdfExportOptions pdfExportOptions = new PdfExportOptions()
+                {
+                    PdfACompatibility = PdfACompatibility.PdfA1b
+                };
+                xtraReport.DataSource = dt;
+                xtraReport.DataMember = dt.TableName;
+                var pdfPath = Path.Combine(Path.GetTempPath(), "raporman");
+                string pdfExportFile = $"{Path.Combine(pdfPath, Path.GetRandomFileName())}.pdf";
+                xtraReport.ExportToPdf(pdfExportFile, pdfExportOptions);
+
+                EmailHelper.SendEmail(recordDt, pdfExportFile, new List<string> { row["ReportName"].ToString() });
+                MessageBox.Show("Test başarılı", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Test edilirken hata meydana geldi", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ReportService.Log($"{ex.Message} - {ex.InnerException}", "HATA");
+            }
+            finally
+            {
+                splashScreenManager1.CloseWaitForm();
+            }
+
         }
     }
 }

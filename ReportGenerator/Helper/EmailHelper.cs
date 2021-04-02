@@ -32,10 +32,11 @@ namespace ReportGenerator.Helper
             }
         }
 
-        internal static void SendEmail(DataTable emailConfig, string finalPdfFileName, string emailAddresses, string emailAddressesBcc, List<string> reportNames)
+        internal static void SendEmail(DataTable emailConfig, string finalPdfFileName, List<string> reportNames)
         {
             var emailConfigRow = emailConfig.Rows[0];
-            MailMessage mailMessage = new MailMessage(emailConfigRow["MailAddress"].ToString(), emailAddresses);
+            MailMessage mailMessage = new MailMessage(emailConfigRow["MailAddress"].ToString(), emailConfigRow["SendTo"].ToString());
+            var emailAddressesBcc = emailConfigRow["SendToBcc"].ToString();
             if (! string.IsNullOrEmpty(emailAddressesBcc))
             {
                 var emailAddressesBccList = emailAddressesBcc.Split(';').ToList();
@@ -44,16 +45,16 @@ namespace ReportGenerator.Helper
                     mailMessage.Bcc.Add(bcc.Trim());
                 }
             }
-            mailMessage.Subject = $"Günlük rapor - {DateTime.Now:HH: mm})";
+            mailMessage.Subject = $"Günlük rapor - {emailConfigRow["ReportTime"]}";
             mailMessage.Attachments.Add(new Attachment(finalPdfFileName));
             mailMessage.Body = reportNames.Count > 1 ? "Aşağıdaki raporlar için PDFler oluşturulmuştur. Ektedir"
                 : $"{reportNames.FirstOrDefault()} için rapor PDF oluşturulmuştur. Ektedir.";
 
 
 
-            var smtpClient = new SmtpClient(emailConfigRow["ServerName"].ToString(), Convert.ToInt32(emailConfigRow["Port"]))
+            var smtpClient = new SmtpClient(emailConfigRow["Host"].ToString(), Convert.ToInt32(emailConfigRow["Port"]))
             {
-                Credentials = new NetworkCredential(emailConfigRow["MailAddress"].ToString(), LoginHelper.Decrypt(emailConfigRow["Password"].ToString())),
+                Credentials = new NetworkCredential(emailConfigRow["MailAddress"].ToString(), LoginHelper.Decrypt(emailConfigRow["MailPassword"].ToString())),
                 EnableSsl = Convert.ToBoolean(emailConfigRow["Ssl"])
             };
             smtpClient.Send(mailMessage);

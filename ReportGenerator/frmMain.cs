@@ -72,5 +72,10 @@ namespace ReportGenerator
         {
             OpenForm(new frmEmail());
         }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenForm(new frmSettings());
+        }
     }
 }

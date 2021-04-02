@@ -67,7 +67,7 @@ namespace ReportGenerator.Forms.Email
                 cnn.AddParameter(command, "@Id", recordId);
                 cnn.AddParameter(command, "@MailAddress", txtMailAdresi.Text);
                 cnn.AddParameter(command, "@FromWho", txtKimden.Text);
-                cnn.AddParameter(command, "@ServerName", txtSunucuAdi.Text);
+                cnn.AddParameter(command, "@Host", txtSunucuAdi.Text);
                 cnn.AddParameter(command, "@Password", LoginHelper.Encrypt(txtSifre.Text));
                 cnn.AddParameter(command, "@Port", txtPort.Text);
                 cnn.AddParameter(command, "@Ssl", comboSSL.SelectedItem);
@@ -104,9 +104,9 @@ namespace ReportGenerator.Forms.Email
             var grid = sender as GridView;
             recordId = Convert.ToInt32(grid.GetFocusedRowCellValue("Id"));
             txtMailAdresi.Text = grid.GetFocusedRowCellValue("MailAddress").ToString();
-            txtSifre.Text = LoginHelper.Decrypt(grid.GetFocusedRowCellValue("Password").ToString());
+            txtSifre.Text = LoginHelper.Decrypt(grid.GetFocusedRowCellValue("MailPassword").ToString());
             txtKimden.Text = grid.GetFocusedRowCellValue("FromWho").ToString();
-            txtSunucuAdi.Text = grid.GetFocusedRowCellValue("ServerName").ToString();
+            txtSunucuAdi.Text = grid.GetFocusedRowCellValue("Host").ToString();
             txtPort.Text = grid.GetFocusedRowCellValue("Port").ToString();
             comboSSL.SelectedItem = grid.GetFocusedRowCellValue("Ssl"); ;
             gleSirket.EditValue = grid.GetFocusedRowCellValue("CompanyId"); ;

@@ -110,12 +110,11 @@
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
-            this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
-            this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
+            this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
             this.label1 = new DevExpress.XtraReports.UI.XRLabel();
+            this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.table1 = new DevExpress.XtraReports.UI.XRTable();
             this.tableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
             this.tableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -124,6 +123,7 @@
             this.tableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.table2 = new DevExpress.XtraReports.UI.XRTable();
             this.tableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
             this.tableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -133,6 +133,8 @@
             this.tableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
             this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+            this.TekStil = new DevExpress.XtraReports.UI.XRControlStyle();
+            this.CiftStil = new DevExpress.XtraReports.UI.XRControlStyle();
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -327,32 +329,6 @@
             this.BottomMargin.HeightF = 775.6267F;
             this.BottomMargin.Name = "BottomMargin";
             // 
-            // ReportHeader
-            // 
-            this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.label1});
-            this.ReportHeader.Dpi = 254F;
-            this.ReportHeader.HeightF = 152.4F;
-            this.ReportHeader.Name = "ReportHeader";
-            // 
-            // GroupHeader1
-            // 
-            this.GroupHeader1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.table1});
-            this.GroupHeader1.Dpi = 254F;
-            this.GroupHeader1.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
-            this.GroupHeader1.HeightF = 71.12F;
-            this.GroupHeader1.Name = "GroupHeader1";
-            // 
-            // Detail
-            // 
-            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.table2});
-            this.Detail.Dpi = 254F;
-            this.Detail.HeightF = 63.42F;
-            this.Detail.HierarchyPrintOptions.Indent = 50.8F;
-            this.Detail.Name = "Detail";
-            // 
             // pageInfo1
             // 
             this.pageInfo1.Dpi = 254F;
@@ -372,6 +348,14 @@
             this.pageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.pageInfo2.TextFormatString = "{0}/ {1}";
             // 
+            // ReportHeader
+            // 
+            this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.label1});
+            this.ReportHeader.Dpi = 254F;
+            this.ReportHeader.HeightF = 152.4F;
+            this.ReportHeader.Name = "ReportHeader";
+            // 
             // label1
             // 
             this.label1.Dpi = 254F;
@@ -380,6 +364,15 @@
             this.label1.SizeF = new System.Drawing.SizeF(1566F, 61.45361F);
             this.label1.StyleName = "Title";
             this.label1.Text = "Test Report";
+            // 
+            // GroupHeader1
+            // 
+            this.GroupHeader1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.table1});
+            this.GroupHeader1.Dpi = 254F;
+            this.GroupHeader1.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
+            this.GroupHeader1.HeightF = 71.12F;
+            this.GroupHeader1.Name = "GroupHeader1";
             // 
             // table1
             // 
@@ -455,6 +448,15 @@
             this.tableCell6.Text = "Password";
             this.tableCell6.Weight = 0.1897513806520395D;
             // 
+            // Detail
+            // 
+            this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.table2});
+            this.Detail.Dpi = 254F;
+            this.Detail.HeightF = 63.42F;
+            this.Detail.HierarchyPrintOptions.Indent = 50.8F;
+            this.Detail.Name = "Detail";
+            // 
             // table2
             // 
             this.table2.Dpi = 254F;
@@ -482,9 +484,11 @@
             // 
             this.tableCell7.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.tableCell7.Dpi = 254F;
+            this.tableCell7.EvenStyleName = "CiftStil";
             this.tableCell7.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Id]")});
             this.tableCell7.Name = "tableCell7";
+            this.tableCell7.OddStyleName = "TekStil";
             this.tableCell7.StyleName = "DetailData1";
             this.tableCell7.StylePriority.UseBorders = false;
             this.tableCell7.StylePriority.UseTextAlignment = false;
@@ -494,45 +498,55 @@
             // tableCell8
             // 
             this.tableCell8.Dpi = 254F;
+            this.tableCell8.EvenStyleName = "CiftStil";
             this.tableCell8.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Name]")});
             this.tableCell8.Name = "tableCell8";
+            this.tableCell8.OddStyleName = "TekStil";
             this.tableCell8.StyleName = "DetailData1";
             this.tableCell8.Weight = 0.12581115991026912D;
             // 
             // tableCell9
             // 
             this.tableCell9.Dpi = 254F;
+            this.tableCell9.EvenStyleName = "CiftStil";
             this.tableCell9.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ServerName]")});
             this.tableCell9.Name = "tableCell9";
+            this.tableCell9.OddStyleName = "TekStil";
             this.tableCell9.StyleName = "DetailData1";
             this.tableCell9.Weight = 0.23421468686817878D;
             // 
             // tableCell10
             // 
             this.tableCell10.Dpi = 254F;
+            this.tableCell10.EvenStyleName = "CiftStil";
             this.tableCell10.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[UserName]")});
             this.tableCell10.Name = "tableCell10";
+            this.tableCell10.OddStyleName = "TekStil";
             this.tableCell10.StyleName = "DetailData1";
             this.tableCell10.Weight = 0.20576385037982883D;
             // 
             // tableCell11
             // 
             this.tableCell11.Dpi = 254F;
+            this.tableCell11.EvenStyleName = "CiftStil";
             this.tableCell11.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DbName]")});
             this.tableCell11.Name = "tableCell11";
+            this.tableCell11.OddStyleName = "TekStil";
             this.tableCell11.StyleName = "DetailData1";
             this.tableCell11.Weight = 0.1772973908850895D;
             // 
             // tableCell12
             // 
             this.tableCell12.Dpi = 254F;
+            this.tableCell12.EvenStyleName = "CiftStil";
             this.tableCell12.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Password]")});
             this.tableCell12.Name = "tableCell12";
+            this.tableCell12.OddStyleName = "TekStil";
             this.tableCell12.StyleName = "DetailData1";
             this.tableCell12.Weight = 0.18975139982137249D;
             // 
@@ -571,6 +585,19 @@
             selectQuery7});
             this.sqlDataSource2.ResultSchemaSerializable = resources.GetString("sqlDataSource2.ResultSchemaSerializable");
             // 
+            // TekStil
+            // 
+            this.TekStil.BackColor = System.Drawing.Color.White;
+            this.TekStil.BorderColor = System.Drawing.Color.Black;
+            this.TekStil.Name = "TekStil";
+            this.TekStil.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 254F);
+            // 
+            // CiftStil
+            // 
+            this.CiftStil.BackColor = System.Drawing.Color.Yellow;
+            this.CiftStil.BorderColor = System.Drawing.Color.Red;
+            this.CiftStil.Name = "CiftStil";
+            // 
             // Report1
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -597,7 +624,9 @@
             this.DetailCaption1,
             this.DetailData1,
             this.DetailData3_Odd,
-            this.PageInfo});
+            this.PageInfo,
+            this.TekStil,
+            this.CiftStil});
             this.Version = "20.1";
             ((System.ComponentModel.ISupportInitialize)(this.table1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).EndInit();
@@ -638,5 +667,7 @@
         private DevExpress.XtraReports.UI.XRTableCell tableCell11;
         private DevExpress.XtraReports.UI.XRTableCell tableCell12;
         private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource2;
+        private DevExpress.XtraReports.UI.XRControlStyle TekStil;
+        private DevExpress.XtraReports.UI.XRControlStyle CiftStil;
     }
 }

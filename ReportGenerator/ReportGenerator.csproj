@@ -79,6 +79,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmReportDesigner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportDesigner.Designer.cs">
+      <DependentUpon>frmReportDesigner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Company\frmCompany.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CustomConnectionProviderService.cs" />
+    <Compile Include="Helper\CustomConnectionStorageService.cs" />
+    <Compile Include="Helper\CustomSqlDataConnection.cs" />
     <Compile Include="Helper\DbHelper.cs" />
     <Compile Include="Helper\EmailHelper.cs" />
     <Compile Include="Helper\LoginHelper.cs" />
@@ -145,6 +154,9 @@
     <Compile Include="WaitForm1.Designer.cs">
       <DependentUpon>WaitForm1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmReportDesigner.resx">
+      <DependentUpon>frmReportDesigner.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Company\frmCompany.resx">
       <DependentUpon>frmCompany.cs</DependentUpon>
     </EmbeddedResource>

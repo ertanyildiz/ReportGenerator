@@ -77,5 +77,10 @@ namespace ReportGenerator
         {
             OpenForm(new frmSettings());
         }
+
+        private void barBtnReportDesigner_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            new frmReportDesigner().Show();
+        }
     }
 }

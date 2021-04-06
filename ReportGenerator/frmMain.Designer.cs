@@ -44,6 +44,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::ReportGenerator.WaitForm1), true, true);
+            this.barBtnReportDesigner = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -61,10 +62,11 @@
             this.btnRaporKart,
             this.btnEmailKart,
             this.barButtonItem3,
-            this.staticUserName});
+            this.staticUserName,
+            this.barBtnReportDesigner});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbon.MaxItemId = 8;
+            this.ribbon.MaxItemId = 9;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -137,6 +139,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnSirketKart);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnRaporKart);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnEmailKart);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barBtnReportDesigner);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             // 
             // ribbonPage2
@@ -167,6 +170,15 @@
             // splashScreenManager1
             // 
             this.splashScreenManager1.ClosingDelay = 500;
+            // 
+            // barBtnReportDesigner
+            // 
+            this.barBtnReportDesigner.Caption = "Rapor Tasarım";
+            this.barBtnReportDesigner.Id = 8;
+            this.barBtnReportDesigner.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barBtnReportDesigner.ImageOptions.Image")));
+            this.barBtnReportDesigner.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barBtnReportDesigner.ImageOptions.LargeImage")));
+            this.barBtnReportDesigner.Name = "barBtnReportDesigner";
+            this.barBtnReportDesigner.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnReportDesigner_ItemClick);
             // 
             // frmMain
             // 
@@ -205,5 +217,6 @@
         private DevExpress.XtraBars.BarStaticItem staticUserName;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraBars.BarButtonItem barBtnReportDesigner;
     }
 }

@@ -269,6 +269,9 @@ namespace ReportGenerator.Forms.Report
                 {
                     PdfACompatibility = PdfACompatibility.PdfA1b
                 };
+                //TODO create raporman folder
+                //bcc set failure
+
                 xtraReport.DataSource = dt;
                 xtraReport.DataMember = dt.TableName;
                 var pdfPath = Path.Combine(Path.GetTempPath(), "raporman");

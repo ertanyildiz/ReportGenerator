@@ -27,7 +27,7 @@ namespace ReportGenerator
                 }
                 var reports = GetCurrentReports();
                 if (reports.Rows.Count < 1) { return 0; }
-                var pdfPath = Path.Combine(Path.GetTempPath(), "raporman");
+                var pdfPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "raporman");
                 if (!Directory.Exists(pdfPath))
                 {
                     Directory.CreateDirectory(pdfPath);
@@ -55,8 +55,9 @@ namespace ReportGenerator
                     xtraReport.DataSource = dt;
                     xtraReport.DataMember = dt.TableName;
 
+                    var pdfFileNameWithDate = $"{row["ReportName"]}_{DateTime.Now:dd.MM.yyyy}-{DateTime.Now:fff}";
                     //pdf file name
-                    string pdfExportFile = $"{Path.Combine(pdfPath, Path.GetRandomFileName())}.pdf";
+                    string pdfExportFile = $"{Path.Combine(pdfPath, pdfFileNameWithDate)}.pdf";
                     //get file pdf file Name
                     pdfFileNames.Add(pdfExportFile);
                     //get report names
@@ -65,8 +66,17 @@ namespace ReportGenerator
                     // Export the report.
                     xtraReport.ExportToPdf(pdfExportFile, pdfExportOptions);
                 }
-                var finalPdfFileName = $"{Path.Combine(pdfPath, Path.GetRandomFileName())}.pdf";
-                EmailHelper.MergePDFs(finalPdfFileName, pdfFileNames);
+                var finalPdfFileName = "";
+
+                if (pdfFileNames.Count == 1)
+                {
+                    finalPdfFileName = pdfFileNames.FirstOrDefault();
+                }
+                else
+                {
+                    finalPdfFileName = Path.Combine(pdfPath, $"{reportNames.FirstOrDefault()}_{reportNames.Count}_{DateTime.Now:dd.MM.yyyy}.pdf" );
+                    EmailHelper.MergePDFs(finalPdfFileName, pdfFileNames);
+                }
                 EmailHelper.SendEmail(reports, finalPdfFileName, reportNames);
                 CultureInfo turkish = new CultureInfo("tr-TR");
                 string dayName = DateTime.Now.ToString("dddd", turkish);

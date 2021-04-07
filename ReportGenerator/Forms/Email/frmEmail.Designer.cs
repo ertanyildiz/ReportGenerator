@@ -451,6 +451,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.IconOptions.Image = global::ReportGenerator.Properties.Resources.giza_son_logo_C3G_icon;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmEmail";
             this.Text = "Email Tanımları";

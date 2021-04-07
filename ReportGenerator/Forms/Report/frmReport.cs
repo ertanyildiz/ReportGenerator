@@ -53,12 +53,14 @@ namespace ReportGenerator.Forms.Report
                     {
                         cnn.AddParameter(command, "@Id", recordId);
                         cnn.AddParameter(command, "@ReportName", txtRapor.Text);
+                        cnn.AddParameter(command, "@ReportDisplayName", txtRaporGrupAdi.Text);
                         cnn.AddParameter(command, "@SendTo", txtKimeRichTextBox.Text);
                         cnn.AddParameter(command, "@SendToBcc", txtKimeBCCRichTextBox.Text);
                         cnn.AddParameter(command, "@ReportFile", txtRaporTasarimDosyasi.Text);
                         cnn.AddParameter(command, "@FileFormat", comboDosyaTipi.SelectedItem.ToString());
                         cnn.AddParameter(command, "@ReportTime", dtpSaat.Value.ToString("HH:mm"));
                         cnn.AddParameter(command, "@SqlQuery", txtSorguRichTextBox.Text);
+                        cnn.AddParameter(command, "@ReportDescription", txtMailAciklama.Text);
                         cnn.AddParameter(command, "@CompanyId", gleSirket.EditValue);
                         if (recordId < 1)
                         {
@@ -178,8 +180,10 @@ namespace ReportGenerator.Forms.Report
         {
             gleSirket.EditValue = record.Rows[0]["CompanyId"];
             txtRapor.Text = record.Rows[0]["ReportName"].ToString();
-            txtKimeBCCRichTextBox.Text = record.Rows[0]["SendTo"].ToString();
-            txtKimeRichTextBox.Text = record.Rows[0]["SendToBcc"].ToString();
+            txtRaporGrupAdi.Text = record.Rows[0]["ReportDisplayName"].ToString();
+            txtMailAciklama.Text = record.Rows[0]["ReportDescription"].ToString();
+            txtKimeRichTextBox.Text = record.Rows[0]["SendTo"].ToString();
+            txtKimeBCCRichTextBox.Text = record.Rows[0]["SendToBcc"].ToString();
             comboDosyaTipi.SelectedItem = record.Rows[0]["FileFormat"];
             txtSorguRichTextBox.Text = record.Rows[0]["SqlQuery"].ToString();
             txtRaporTasarimDosyasi.Text = record.Rows[0]["ReportFile"].ToString();
@@ -274,8 +278,13 @@ namespace ReportGenerator.Forms.Report
 
                 xtraReport.DataSource = dt;
                 xtraReport.DataMember = dt.TableName;
-                var pdfPath = Path.Combine(Path.GetTempPath(), "raporman");
-                string pdfExportFile = $"{Path.Combine(pdfPath, Path.GetRandomFileName())}.pdf";
+                var pdfPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "raporman");
+                if (!Directory.Exists(pdfPath))
+                {
+                    Directory.CreateDirectory(pdfPath);
+                }
+                var pdfFileName = $"{row["ReportName"]}_{DateTime.Now:dd.MM.yyyy}-{DateTime.Now:fff}";
+                string pdfExportFile = $"{Path.Combine(pdfPath, pdfFileName)}.pdf";
                 xtraReport.ExportToPdf(pdfExportFile, pdfExportOptions);
 
                 EmailHelper.SendEmail(recordDt, pdfExportFile, new List<string> { row["ReportName"].ToString() });
@@ -291,6 +300,11 @@ namespace ReportGenerator.Forms.Report
                 splashScreenManager1.CloseWaitForm();
             }
 
+        }
+
+        private void txtRapor_TextChanged(object sender, EventArgs e)
+        {
+            txtRaporGrupAdi.Text = txtRapor.Text;
         }
     }
 }

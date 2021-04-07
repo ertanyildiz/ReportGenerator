@@ -30,7 +30,7 @@ namespace ReportGenerator
                 return;
             }
             ReportService service = new ReportService();
-            //service.TestIT();
+            service.TestIT();
             GlobalParams.conn = new DAL.Connection();
             //Application.Run(new frmReport());
             //return;

@@ -7,7 +7,7 @@
     <ProjectGuid>{67E393E7-447F-4F2A-B0B1-2F4BBB6E0E86}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ReportGeneratorService</RootNamespace>
-    <AssemblyName>ReportGeneratorService</AssemblyName>
+    <AssemblyName>RapomanService</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>toppng.com-ear-icon-free-windows-service-ico-996x1025.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Utils.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -79,6 +82,9 @@
     <None Include="..\ReportGenerator\App.config">
       <Link>App.config</Link>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="toppng.com-ear-icon-free-windows-service-ico-996x1025.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

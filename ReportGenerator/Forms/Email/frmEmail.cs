@@ -59,6 +59,8 @@ namespace ReportGenerator.Forms.Email
             if (!EmailHelper.SendEmail(txtSunucuAdi.Text, txtMailAdresi.Text, testEmailAddress, LoginHelper.Encrypt(txtSifre.Text), Convert.ToInt32(txtPort.Text), Convert.ToBoolean(comboSSL.SelectedItem)))
             {
                 MessageBox.Show("Mail ayarlarında sorun var!", Text, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                splashScreenManager1.CloseWaitForm();
+                return;
             }
             splashScreenManager1.CloseWaitForm();
 
@@ -77,6 +79,8 @@ namespace ReportGenerator.Forms.Email
                 MessageBox.Show("Kayıt başarılı", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearFields();
                 InitList();
+                Text = $"{title} - Yeni Kayıt";
+                recordId = 0;
             }
 
         }

@@ -51,8 +51,7 @@ namespace ReportGeneratorService
         {
             try
             {
-                var res = new ReportGenerator.ReportService().TestIT();
-                WriteToFile(res.ToString());
+                var res = new ReportGenerator.ReportService().RunService();
             }
             catch (Exception ex)
             {

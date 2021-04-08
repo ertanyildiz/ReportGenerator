@@ -29,11 +29,7 @@ namespace ReportGenerator
                 MessageBox.Show("Lütfen script dosyasını database üzerinde çalıştırarak veritabanı oluşturun!");
                 return;
             }
-            ReportService service = new ReportService();
-            service.TestIT();
             GlobalParams.conn = new DAL.Connection();
-            //Application.Run(new frmReport());
-            //return;
             Application.Run(new frmLogin());
             if (GlobalParams.LoggedIn)
             {

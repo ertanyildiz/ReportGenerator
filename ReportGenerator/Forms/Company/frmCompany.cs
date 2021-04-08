@@ -49,6 +49,8 @@ namespace ReportGenerator.Forms.Company
                 MessageBox.Show("Kayıt başarılı", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearFields();
                 InitList();
+                Text = $"{title} - Yeni Kayıt";
+                recordId = 0;
             }
 
         }

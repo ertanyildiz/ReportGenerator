@@ -309,7 +309,7 @@
             this.txtSirketAdi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSirketAdi.Name = "txtSirketAdi";
             this.txtSirketAdi.Size = new System.Drawing.Size(361, 23);
-            this.txtSirketAdi.TabIndex = 2;
+            this.txtSirketAdi.TabIndex = 0;
             // 
             // txtVeritabani
             // 
@@ -317,7 +317,7 @@
             this.txtVeritabani.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtVeritabani.Name = "txtVeritabani";
             this.txtVeritabani.Size = new System.Drawing.Size(361, 23);
-            this.txtVeritabani.TabIndex = 2;
+            this.txtVeritabani.TabIndex = 4;
             // 
             // txtSifre
             // 
@@ -326,7 +326,7 @@
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.PasswordChar = '*';
             this.txtSifre.Size = new System.Drawing.Size(361, 23);
-            this.txtSifre.TabIndex = 2;
+            this.txtSifre.TabIndex = 3;
             // 
             // txtKullaniciAdi
             // 
@@ -342,7 +342,7 @@
             this.txtSunucuAdi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSunucuAdi.Name = "txtSunucuAdi";
             this.txtSunucuAdi.Size = new System.Drawing.Size(361, 23);
-            this.txtSunucuAdi.TabIndex = 2;
+            this.txtSunucuAdi.TabIndex = 1;
             // 
             // label5
             // 

@@ -15,7 +15,7 @@ namespace ReportGenerator
 {
     public class ReportService
     {
-        public int TestIT()
+        public int RunService()
         {
             try
             {
@@ -100,8 +100,6 @@ namespace ReportGenerator
             {
                 cnn.AddParameter(command, "@DayNumber", currentDay);
                 cnn.AddParameter(command, "@ReportTime", currentTime);
-                //cnn.AddParameter(command, "@DayNumber", 1);
-                //cnn.AddParameter(command, "@ReportTime", "14:55");
                 reports = cnn.GetData(command);
                 cnn.Close();
             }

@@ -89,6 +89,7 @@ namespace ReportGenerator.Forms.Report
                     ClearFields();
                     InitList();
                     recordId = 0;
+                    Text = $"{title} - Yeni Kayıt";
                     scope.Complete();
                 }
             }
@@ -101,7 +102,7 @@ namespace ReportGenerator.Forms.Report
 
         private void ClearFields()
         {
-            gleSirket.EditValue = txtRapor.Text = txtKimeBCCRichTextBox.Text = txtKimeRichTextBox.Text = txtSorguRichTextBox.Text = txtRaporTasarimDosyasi.Text = "";
+            gleSirket.EditValue = txtRapor.Text = txtKimeBCCRichTextBox.Text = txtKimeRichTextBox.Text = txtSorguRichTextBox.Text = txtRaporTasarimDosyasi.Text = txtMailAciklama.Text = "";
             comboGunlerMultiSelect.SetEditValue("");
         }
 

@@ -47,10 +47,7 @@ namespace ReportGenerator.Helper
             }
             mailMessage.Subject = $"Günlük rapor - {emailConfigRow["ReportTime"]}";
             mailMessage.Attachments.Add(new Attachment(finalPdfFileName));
-            mailMessage.Body = reportNames.Count > 1 ? "Aşağıdaki raporlar için PDFler oluşturulmuştur. Ektedir"
-                : $"{reportNames.FirstOrDefault()} için rapor PDF oluşturulmuştur. Ektedir.";
-
-
+            mailMessage.Body = emailConfigRow["ReportDescription"].ToString();
 
             var smtpClient = new SmtpClient(emailConfigRow["Host"].ToString(), Convert.ToInt32(emailConfigRow["Port"]))
             {

@@ -55,7 +55,7 @@ namespace ReportGeneratorService
             }
             catch (Exception ex)
             {
-                WriteToFile("---");
+                WriteToFile($"---{DateTime.Now:HH:mm}");
                 WriteToFile(ex.Message);
                 WriteToFile(ex.StackTrace);
                 WriteToFile("---");

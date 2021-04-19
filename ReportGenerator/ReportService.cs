@@ -3,6 +3,7 @@ using DevExpress.XtraReports.UI;
 using ReportGenerator.Helper;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
@@ -15,6 +16,7 @@ namespace ReportGenerator
 {
     public class ReportService
     {
+        private const string MERGE_PDF = "1";
         public int RunService()
         {
             try
@@ -36,6 +38,7 @@ namespace ReportGenerator
                 var emailAddresses = reports.Rows[0]["SendTo"].ToString();
                 var emailAddressesBcc = reports.Rows[0]["SendToBcc"].ToString();
                 var reportNames = new List<string>();
+                var mergePDF = ConfigurationManager.AppSettings["PDFBirlestir"];
                 foreach (DataRow row in reports.Rows)
                 {
                     var servername = row["ServerName"].ToString();
@@ -68,16 +71,14 @@ namespace ReportGenerator
                 }
                 var finalPdfFileName = "";
 
-                if (pdfFileNames.Count == 1)
+                if (mergePDF == MERGE_PDF)
                 {
-                    finalPdfFileName = pdfFileNames.FirstOrDefault();
-                }
-                else
-                {
-                    finalPdfFileName = Path.Combine(pdfPath, $"{reportNames.FirstOrDefault()}_{reportNames.Count}_{DateTime.Now:dd.MM.yyyy}.pdf" );
+                    finalPdfFileName = Path.Combine(pdfPath, $"{reportNames.FirstOrDefault()}_{reportNames.Count}_{DateTime.Now:dd.MM.yyyy}.pdf");
                     EmailHelper.MergePDFs(finalPdfFileName, pdfFileNames);
+                    pdfFileNames.Clear();
+                    pdfFileNames.Add(finalPdfFileName);
                 }
-                EmailHelper.SendEmail(reports, finalPdfFileName, reportNames);
+                EmailHelper.SendEmail(reports, pdfFileNames);
                 CultureInfo turkish = new CultureInfo("tr-TR");
                 string dayName = DateTime.Now.ToString("dddd", turkish);
                 Log($"{dayName} {DateTime.Now:HH:mm} Maili gönderildi", "BİLGİ");
@@ -94,7 +95,7 @@ namespace ReportGenerator
         {
             var cnn = new DAL.Connection();
             var currentTime = DateTime.Now.ToString("HH:mm");
-            var currentDay = (int)DateTime.Now.DayOfWeek;
+            var currentDay = (DateTime.Now.DayOfWeek == 0) ? 7 : (int)DateTime.Now.DayOfWeek;
             var reports = new DataTable();
             using (var command = cnn.CreateCommand("SP_SELECT_REPORT_BY_TIME", CommandType.StoredProcedure))
             {

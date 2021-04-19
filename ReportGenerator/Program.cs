@@ -30,6 +30,8 @@ namespace ReportGenerator
                 return;
             }
             GlobalParams.conn = new DAL.Connection();
+            new ReportService().RunService();
+            return;
             Application.Run(new frmLogin());
             if (GlobalParams.LoggedIn)
             {

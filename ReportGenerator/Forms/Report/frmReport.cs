@@ -288,7 +288,7 @@ namespace ReportGenerator.Forms.Report
                 string pdfExportFile = $"{Path.Combine(pdfPath, pdfFileName)}.pdf";
                 xtraReport.ExportToPdf(pdfExportFile, pdfExportOptions);
 
-                EmailHelper.SendEmail(recordDt, pdfExportFile, new List<string> { row["ReportName"].ToString() });
+                EmailHelper.SendEmail(recordDt, new List<string> { pdfExportFile });
                 MessageBox.Show("Test başarılı", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)

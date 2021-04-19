@@ -32,7 +32,7 @@ namespace ReportGenerator.Helper
             }
         }
 
-        internal static void SendEmail(DataTable emailConfig, string finalPdfFileName, List<string> reportNames)
+        internal static void SendEmail(DataTable emailConfig, List<string> reportNames)
         {
             var emailConfigRow = emailConfig.Rows[0];
             MailMessage mailMessage = new MailMessage(emailConfigRow["MailAddress"].ToString(), emailConfigRow["SendTo"].ToString());
@@ -46,7 +46,10 @@ namespace ReportGenerator.Helper
                 }
             }
             mailMessage.Subject = $"Günlük rapor - {emailConfigRow["ReportTime"]}";
-            mailMessage.Attachments.Add(new Attachment(finalPdfFileName));
+            foreach (var pdfName in reportNames)
+            {
+                mailMessage.Attachments.Add(new Attachment(pdfName));
+            }
             mailMessage.Body = emailConfigRow["ReportDescription"].ToString();
 
             var smtpClient = new SmtpClient(emailConfigRow["Host"].ToString(), Convert.ToInt32(emailConfigRow["Port"]))

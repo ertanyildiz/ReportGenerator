@@ -35,8 +35,6 @@ namespace ReportGenerator
                     Directory.CreateDirectory(pdfPath);
                 }
                 var pdfFileNames = new List<string>();
-                var emailAddresses = reports.Rows[0]["SendTo"].ToString();
-                var emailAddressesBcc = reports.Rows[0]["SendToBcc"].ToString();
                 var reportNames = new List<string>();
                 var mergePDF = ConfigurationManager.AppSettings["PDFBirlestir"];
                 foreach (DataRow row in reports.Rows)
@@ -58,7 +56,7 @@ namespace ReportGenerator
                     xtraReport.DataSource = dt;
                     xtraReport.DataMember = dt.TableName;
 
-                    var pdfFileNameWithDate = $"{row["ReportName"]}_{DateTime.Now:dd.MM.yyyy}-{DateTime.Now:fff}";
+                    var pdfFileNameWithDate = $"{row["ReportName"]}_{DateTime.Now.AddDays(-1):dd.MM.yyyy}-{DateTime.Now:fff}";
                     //pdf file name
                     string pdfExportFile = $"{Path.Combine(pdfPath, pdfFileNameWithDate)}.pdf";
                     //get file pdf file Name
@@ -69,11 +67,10 @@ namespace ReportGenerator
                     // Export the report.
                     xtraReport.ExportToPdf(pdfExportFile, pdfExportOptions);
                 }
-                var finalPdfFileName = "";
 
                 if (mergePDF == MERGE_PDF)
                 {
-                    finalPdfFileName = Path.Combine(pdfPath, $"{reportNames.FirstOrDefault()}_{reportNames.Count}_{DateTime.Now:dd.MM.yyyy}.pdf");
+                    var finalPdfFileName = Path.Combine(pdfPath, $"{reportNames.FirstOrDefault()}_{reportNames.Count}_{DateTime.Now.AddDays(-1):dd.MM.yyyy}.pdf");
                     EmailHelper.MergePDFs(finalPdfFileName, pdfFileNames);
                     pdfFileNames.Clear();
                     pdfFileNames.Add(finalPdfFileName);

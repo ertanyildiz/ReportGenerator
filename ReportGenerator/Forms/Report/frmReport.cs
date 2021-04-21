@@ -274,8 +274,6 @@ namespace ReportGenerator.Forms.Report
                 {
                     PdfACompatibility = PdfACompatibility.PdfA1b
                 };
-                //TODO create raporman folder
-                //bcc set failure
 
                 xtraReport.DataSource = dt;
                 xtraReport.DataMember = dt.TableName;
@@ -284,7 +282,7 @@ namespace ReportGenerator.Forms.Report
                 {
                     Directory.CreateDirectory(pdfPath);
                 }
-                var pdfFileName = $"{row["ReportName"]}_{DateTime.Now:dd.MM.yyyy}-{DateTime.Now:fff}";
+                var pdfFileName = $"{row["ReportName"]}_{DateTime.Now.AddDays(-1):dd.MM.yyyy}-{DateTime.Now:fff}";
                 string pdfExportFile = $"{Path.Combine(pdfPath, pdfFileName)}.pdf";
                 xtraReport.ExportToPdf(pdfExportFile, pdfExportOptions);
 

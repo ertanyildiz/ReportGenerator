@@ -58,6 +58,7 @@ namespace ReportGeneratorService
                 WriteToFile($"---{DateTime.Now:HH:mm}");
                 WriteToFile(ex.Message);
                 WriteToFile(ex.StackTrace);
+                WriteToFile(ex.InnerException.ToString());
                 WriteToFile("---");
             }
         }

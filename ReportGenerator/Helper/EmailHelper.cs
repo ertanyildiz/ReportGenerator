@@ -39,7 +39,7 @@ namespace ReportGenerator.Helper
             var emailAddressesBcc = emailConfigRow["SendToBcc"].ToString();
             if (! string.IsNullOrEmpty(emailAddressesBcc))
             {
-                var emailAddressesBccList = emailAddressesBcc.Split(';').ToList();
+                var emailAddressesBccList = emailAddressesBcc.Split(',').ToList();
                 foreach (var bcc in emailAddressesBccList)
                 {
                     mailMessage.Bcc.Add(bcc.Trim());
